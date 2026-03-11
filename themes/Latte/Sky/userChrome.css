@@ -127,4 +127,58 @@
   #zen-appcontent-navbar-container {
     background-color: #e6e9ef !important;
   }
+
+  /* ── Fix Zen Twilight acrylic/blur bleeding through wrapper gaps ── */
+
+  /* Remove system appearance so CSS backgrounds take effect */
+  #zen-main-app-wrapper,
+  #zen-appcontent-wrapper,
+  #zen-sidebar-splitter,
+  #zen-browser-background {
+    appearance: unset !important;
+    -moz-default-appearance: none !important;
+  }
+
+  /* Paint every wrapper / splitter / gap element with Catppuccin Latte base */
+  #zen-main-app-wrapper,
+  #zen-appcontent-wrapper,
+  #zen-sidebar-splitter,
+  #zen-browser-background,
+  .zen-browser-generic-background,
+  .zen-toolbar-background,
+  #navigator-toolbox,
+  #tabbrowser-tabbox,
+  #main-window {
+    background: #e6e9ef !important;
+    background-color: #e6e9ef !important;
+  }
+
+  /* Style sidebar splitters */
+  #sidebar-splitter {
+    border: none !important;
+    background: #e6e9ef !important;
+  }
+
+  #zen-sidebar-splitter {
+    border: none !important;
+    background: #e6e9ef !important;
+    background-color: #e6e9ef !important;
+    opacity: 1 !important;
+  }
+
+  #zen-sidebar-splitter:hover {
+    background: #ccd0da !important;
+    background-color: #ccd0da !important;
+  }
+
+  /* macOS-specific variable overrides */
+  @media (-moz-platform: macos) {
+    :root {
+      --zen-themed-toolbar-bg-transparent: #e6e9ef !important;
+      --zen-main-browser-background-toolbar: #e6e9ef !important;
+      --zen-main-browser-background-old: #e6e9ef !important;
+      --zen-main-browser-background-toolbar-old: #e6e9ef !important;
+      --zen-navigator-toolbox-background: #e6e9ef !important;
+    }
+  }
 }
