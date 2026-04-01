@@ -34,6 +34,8 @@ whiskers:
     --zen-themed-toolbar-bg: #{{ mantle.hex }} !important;
     --zen-main-browser-background: #{{ mantle.hex }} !important;
     --toolbox-bgcolor-inactive: #{{ mantle.hex }} !important;
+    --zen-element-separation: 8px !important;
+    --zen-webview-border-radius: 10px !important;
   }
 
   #permissions-granted-icon {
@@ -130,11 +132,66 @@ whiskers:
     --identity-icon-color: #{{ mauve.hex }} !important;
   }
 
-  hbox#titlebar {
+  #zen-appcontent-navbar-container {
     background-color: #{{ mantle.hex }} !important;
   }
 
-  #zen-appcontent-navbar-container {
+  /* Safer Zen Twilight acrylic/seam fix based on a working macOS/Twilight setup */
+  #sidebar-splitter,
+  #zen-sidebar-splitter {
+    --catppuccin-splitter-idle: #{{ mantle.hex }};
+    --catppuccin-splitter-hover-neutral: color-mix(
+      in srgb,
+      white 28%,
+      #{{ mantle.hex }} 72%
+    );
+    border: none !important;
+    opacity: 1 !important;
+    background: var(--catppuccin-splitter-idle) !important;
+    background-color: var(--catppuccin-splitter-idle) !important;
+    transition:
+      background-color 0.18s ease-in-out,
+      background 0.18s ease-in-out,
+      opacity 0.18s ease-in-out !important;
+  }
+
+  #sidebar-splitter::before,
+  #zen-sidebar-splitter::before {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  #sidebar-splitter:hover,
+  #zen-sidebar-splitter:hover {
+    background: var(--catppuccin-splitter-hover-neutral) !important;
+    background-color: var(--catppuccin-splitter-hover-neutral) !important;
+  }
+
+  /* Wrapper appearance reset that proved safe in testing */
+  #zen-main-app-wrapper,
+  #zen-appcontent-wrapper,
+  #zen-sidebar-splitter,
+  #zen-browser-background {
+    appearance: unset !important;
+    -moz-default-appearance: none !important;
+  }
+
+  /* Wrapper/background painting that proved safe in testing */
+  #zen-main-app-wrapper,
+  #zen-appcontent-wrapper,
+  #zen-browser-background,
+  .zen-browser-generic-background,
+  .zen-toolbar-background,
+  #navigator-toolbox,
+  #tabbrowser-tabbox,
+  #main-window {
+    background: #{{ mantle.hex }} !important;
     background-color: #{{ mantle.hex }} !important;
+  }
+
+  /* Remove seam shadows that can show through at the sidebar/content corners */
+  #zen-tabbox-wrapper #sidebar-box,
+  #tabbrowser-tabbox #tabbrowser-tabpanels .browserSidebarContainer {
+    box-shadow: none !important;
   }
 }

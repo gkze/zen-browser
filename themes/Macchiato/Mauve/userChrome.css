@@ -24,6 +24,8 @@
     --zen-themed-toolbar-bg: #1e2030 !important;
     --zen-main-browser-background: #1e2030 !important;
     --toolbox-bgcolor-inactive: #1e2030 !important;
+    --zen-element-separation: 8px !important;
+    --zen-webview-border-radius: 10px !important;
   }
 
   #permissions-granted-icon {
@@ -120,17 +122,42 @@
     --identity-icon-color: #c6a0f6 !important;
   }
 
-  hbox#titlebar {
-    background-color: #1e2030 !important;
-  }
-
   #zen-appcontent-navbar-container {
     background-color: #1e2030 !important;
   }
 
-  /* ── Fix Zen Twilight acrylic/blur bleeding through wrapper gaps ── */
+  /* Safer Zen Twilight acrylic/seam fix based on a working macOS/Twilight setup */
+  #sidebar-splitter,
+  #zen-sidebar-splitter {
+    --catppuccin-splitter-idle: #1e2030;
+    --catppuccin-splitter-hover-neutral: color-mix(
+      in srgb,
+      white 28%,
+      #1e2030 72%
+    );
+    border: none !important;
+    opacity: 1 !important;
+    background: var(--catppuccin-splitter-idle) !important;
+    background-color: var(--catppuccin-splitter-idle) !important;
+    transition:
+      background-color 0.18s ease-in-out,
+      background 0.18s ease-in-out,
+      opacity 0.18s ease-in-out !important;
+  }
 
-  /* Remove system appearance so CSS backgrounds take effect */
+  #sidebar-splitter::before,
+  #zen-sidebar-splitter::before {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  #sidebar-splitter:hover,
+  #zen-sidebar-splitter:hover {
+    background: var(--catppuccin-splitter-hover-neutral) !important;
+    background-color: var(--catppuccin-splitter-hover-neutral) !important;
+  }
+
+  /* Wrapper appearance reset that proved safe in testing */
   #zen-main-app-wrapper,
   #zen-appcontent-wrapper,
   #zen-sidebar-splitter,
@@ -139,10 +166,9 @@
     -moz-default-appearance: none !important;
   }
 
-  /* Paint every wrapper / splitter / gap element with Catppuccin Macchiato base */
+  /* Wrapper/background painting that proved safe in testing */
   #zen-main-app-wrapper,
   #zen-appcontent-wrapper,
-  #zen-sidebar-splitter,
   #zen-browser-background,
   .zen-browser-generic-background,
   .zen-toolbar-background,
@@ -153,32 +179,9 @@
     background-color: #1e2030 !important;
   }
 
-  /* Style sidebar splitters */
-  #sidebar-splitter {
-    border: none !important;
-    background: #1e2030 !important;
-  }
-
-  #zen-sidebar-splitter {
-    border: none !important;
-    background: #1e2030 !important;
-    background-color: #1e2030 !important;
-    opacity: 1 !important;
-  }
-
-  #zen-sidebar-splitter:hover {
-    background: #363a4f !important;
-    background-color: #363a4f !important;
-  }
-
-  /* macOS-specific variable overrides */
-  @media (-moz-platform: macos) {
-    :root {
-      --zen-themed-toolbar-bg-transparent: #1e2030 !important;
-      --zen-main-browser-background-toolbar: #1e2030 !important;
-      --zen-main-browser-background-old: #1e2030 !important;
-      --zen-main-browser-background-toolbar-old: #1e2030 !important;
-      --zen-navigator-toolbox-background: #1e2030 !important;
-    }
+  /* Remove seam shadows that can show through at the sidebar/content corners */
+  #zen-tabbox-wrapper #sidebar-box,
+  #tabbrowser-tabbox #tabbrowser-tabpanels .browserSidebarContainer {
+    box-shadow: none !important;
   }
 }
