@@ -136,7 +136,9 @@ whiskers:
     background-color: #{{ mantle.hex }} !important;
   }
 
-  /* Safer Zen Twilight acrylic/seam fix based on a working macOS/Twilight setup */
+  /* Keep only the splitter themed; let Zen manage its own wrapper layers so
+   * detached compact mode preserves the native shell structure.
+   */
   #sidebar-splitter,
   #zen-sidebar-splitter {
     --catppuccin-splitter-idle: #{{ mantle.hex }};
@@ -187,6 +189,38 @@ whiskers:
   #main-window {
     background: #{{ mantle.hex }} !important;
     background-color: #{{ mantle.hex }} !important;
+  }
+
+  /* Keep Zen's detached compact shell layered instead of painting every wrapper. */
+  :root[zen-compact-mode="true"] #navigator-toolbox:not([animate="true"]),
+  :root[zen-compact-mode="true"]
+    #navigator-toolbox:not([animate="true"])
+    #titlebar,
+  :root[zen-compact-mode="true"] #TabsToolbar,
+  :root[zen-compact-mode="true"] #zen-appcontent-navbar-container {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  :root[zen-compact-mode="true"]
+    #navigator-toolbox:not([animate="true"])
+    .zen-toolbar-background,
+  :root[zen-compact-mode="true"]
+    #navigator-toolbox:not([animate="true"])
+    .zen-toolbar-background::before,
+  :root[zen-compact-mode="true"]
+    #navigator-toolbox:not([animate="true"])
+    .zen-toolbar-background::after {
+    background: color-mix(
+      in srgb,
+      var(--lwt-sidebar-background-color) 82%,
+      black
+    ) !important;
+    background-color: color-mix(
+      in srgb,
+      var(--lwt-sidebar-background-color) 82%,
+      black
+    ) !important;
   }
 
   /* Remove seam shadows that can show through at the sidebar/content corners */
