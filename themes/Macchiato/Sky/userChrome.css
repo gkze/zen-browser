@@ -40,6 +40,50 @@
     color: #1e2030 !important;
   }
 
+  /* Keep the bookmarks slide-in panel on one flat background so the header
+   * strip doesn't read as a darker band above the tree.
+   */
+  #bookmarksPanel {
+    --sidebar-background-color: #24273a !important;
+    --sidebar-text-color: #cad3f5 !important;
+    --sidebar-border-color: #24273a !important;
+    --lwt-sidebar-background-color: #24273a !important;
+    --lwt-sidebar-text-color: #cad3f5 !important;
+    background: #24273a !important;
+    background-image: none !important;
+  }
+
+  #bookmarksPanel #sidebar-panel-header,
+  #bookmarksPanel #sidebar-search-container,
+  #bookmarksPanel .sidebar-placesTree {
+    background: #24273a !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  #bookmarksPanel #search-box {
+    --toolbar-field-focus-color: #24273a !important;
+    --lwt-toolbar-field-focus: #24273a !important;
+    --lwt-toolbar-field-border-color: #24273a !important;
+    border-color: #24273a !important;
+    box-shadow: none !important;
+  }
+
+  /* The host sidebar shell can paint its own darker backdrop, so force the
+   * bookmarks launcher container itself to the same color too.
+   */
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"],
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"] > *,
+  #sidebar-main[sidebarcommand="viewBookmarksSidebar"],
+  #sidebar-main[sidebarcommand="viewBookmarksSidebar"] > * {
+    --sidebar-background-color: #24273a !important;
+    --sidebar-text-color: #cad3f5 !important;
+    --sidebar-border-color: #24273a !important;
+    background: #24273a !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
   .sidebar-placesTree {
     background-color: #24273a !important;
   }
