@@ -202,6 +202,12 @@
       color: #cad3f5 !important;
     }
 
+    #categories > .category,
+    .sidebar-footer-link {
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
     #categories > .category:hover,
     .sidebar-footer-link:hover {
       background: #363a4f !important;
@@ -210,6 +216,7 @@
     #categories > .category[selected],
     #categories > .category.selected {
       color: #f0c6c6 !important;
+      border-color: transparent !important;
     }
 
     groupbox,

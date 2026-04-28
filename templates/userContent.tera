@@ -212,6 +212,12 @@ whiskers:
       color: #{{ text.hex }} !important;
     }
 
+    #categories > .category,
+    .sidebar-footer-link {
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
     #categories > .category:hover,
     .sidebar-footer-link:hover {
       background: #{{ surface0.hex }} !important;
@@ -220,6 +226,7 @@ whiskers:
     #categories > .category[selected],
     #categories > .category.selected {
       color: #{{ palette[accent].hex }} !important;
+      border-color: transparent !important;
     }
 
     groupbox,
